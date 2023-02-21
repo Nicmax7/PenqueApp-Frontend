@@ -1,0 +1,172 @@
+body { 
+  margin: 0; 
+  font-family: 'Poppins', sans-serif; 
+  overflow-x: hidden;
+  background-image: url("https://wallpaperaccess.com/full/16668.jpg");
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-tab-group {
+  margin-bottom: 48px;
+}
+.IStatus{
+  background-color: rgba(24, 25, 24, 0.774);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+.table{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.mat-column-photo {
+  width: 10%;
+ 
+}
+
+.mat-column-title {
+  max-width: 250px;
+}
+
+.mat-column-actions {
+  max-width: 100%;
+}
+
+img{
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+}
+
+td{
+  text-align: center !important;
+  vertical-align: middle !important;
+  height: 130px;
+  
+}
+
+:host ::ng-deep .mat-sort-header-container { 
+  display: flex;  
+  justify-content: center; 
+}
+
+th.mat-header-cell, td.mat-cell { 
+  text-align: center; 
+  padding-right: 20px;
+}
+
+.imgstatus img{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+button{
+  background-color: #008812;
+}
+button:hover{
+  background-color: #27c43c;
+}
+
+.VStatus{
+  background-color: rgba(75, 235, 247, 0.87);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+
+}
+.LStatus{
+  background-color: rgba(250, 219, 43, 0.815);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+.EStatus{
+  background-color: rgba(92, 41, 32, 0.815);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+.EeStatus{
+  background-color: rgba(0, 223, 85, 0.774);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+
+.mat-sort-header-container, .th{
+  align-items: right;
+  text-align: right;
+}
+
+.Posiciones
+{
+  background-color: rgb(243, 240, 233);
+  color : rgb(82, 82, 82);
+  font-size: medium;
+}
+
+a {
+  color: antiquewhite;
+}
+a:hover{
+  color: rgb(46, 255, 168);
+}
+
+@media(max-width: 760px){
+  .mat-column-photo {
+    display: none;
+  }
+  img{
+    display: none;
+  }
+
+  .mat-column-title {
+    max-width: 100px;
+    text-align: left !important;
+    height: 80px;
+    white-space:nowrap;
+    overflow:hidden;
+   text-overflow:ellipsis;
+  }
+  .mat-column-price {
+    display: none;
+  }
+  td{
+    text-align: center !important;
+    vertical-align: middle !important;
+    width: 100%;
+  }
+  .mat-column-status{
+   display: none;
+  }
+  
+}

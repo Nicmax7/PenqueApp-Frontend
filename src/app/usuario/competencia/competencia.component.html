@@ -1,0 +1,99 @@
+<section class="container center-vh" *ngIf="isComun()">
+  <mat-card class="pencas-card Info">
+    <h1 class=" text-center">Competencia: <span>{{ competenciaData.nombre }}</span></h1>
+    <h2 class=" text-center">Fecha: <span>{{ competenciaData.fecha_string }}</span></h2>
+    <h3 class=" text-center">Participantes</h3>
+
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let row" class="title">{{ row.nombre }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="deporte">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Área</th>
+        <td mat-cell *matCellDef="let row">
+            <p *ngIf="row.area == 0">Natacion</p>
+            <p *ngIf="row.area == 1">Ciclismo</p>
+            <p *ngIf="row.area == 2">Atletismo</p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="end">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header t> Apuesta </th>
+        <td mat-cell *matCellDef="let row">
+          <button (click)="apostarParticipante(row.id)" *ngIf="apuesta && !tablaPosiciones" mat-stroked-button class="enabled" style="margin-left:5px"  matTooltip="Apuesta por este participante" ><mat-icon>gavel</mat-icon></button>
+          <p *ngIf="!apuesta && nombreParticipante == row.nombre" class="colorP">Tu Apuesta</p>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+        <td mat-cell *matCellDef="let row" class="id"> {{row.id}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="6">
+          No hay participantes en esta competencia :(
+        </td>
+      </tr>
+    </mat-table>
+
+    <mat-paginator
+      #paginator
+      [length]="totalRows"
+      [pageIndex]="pageNumber"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </mat-card>
+</section>
+
+<section *ngIf="tablaPosiciones" class="container ">
+  <mat-card class="pencas-card Resultados">
+    <h1 class=" text-center">Resultados:</h1>
+    <h3 class=" text-center">Participantes</h3>
+
+    <mat-table #table [dataSource]="dataPosiciones" matSort>
+      <!-- title Column -->
+      <ng-container matColumnDef="posiciones">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Posición</th>
+        <td mat-cell *matCellDef="let row" class="posiciones">{{ row.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+        <td mat-cell *matCellDef="let row" class="title">{{ row.nombre }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsP"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsP"></tr>
+
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="6">
+          No hay participantes en esta competencia :(
+        </td>
+      </tr>
+    </mat-table>
+
+    <mat-paginator
+      #paginator
+      [length]="totalRows"
+      [pageIndex]="pageNumber"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </mat-card>
+</section>

@@ -1,0 +1,69 @@
+<section *ngIf="isSuperAdmin()" class="container center-vh">
+  <mat-card class="pencas-card">
+    <h1 class="mat-h1 text-center">{{dtCompetencia.nombre}}</h1>
+    <hr>
+    <div>
+      <br>
+      <mat-card-subtitle>Fecha: {{dtCompetencia.fecha_string}}</mat-card-subtitle>
+      <ng-container *ngIf="dtCompetencia.estado">
+        <mat-card-subtitle>Tope: {{dtCompetencia.topeParticipantes}}</mat-card-subtitle>
+      </ng-container>
+    </div>
+    <ng-container *ngIf="dtCompetencia.estado">
+      <div class="row">
+        <div class="column left">
+          <mat-form-field>
+            <mat-label>País</mat-label>
+            <select matNativeControl [formControl]="paisFormControl" (click)="cargarParticipantes()">
+              <option value="vacio" selected> -- Selecciona un país -- </option>
+              <option *ngFor="let pais of paises" [value]="pais">{{pais}}</option>
+            </select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Participantes</mat-label>
+            <select matNativeControl [formControl]="participanteControl" (click)="guardarIdParticipante()">
+              <option value="undefined" selected> -- Selecciona un participante -- </option>
+              <option [value]="item.id" *ngFor="let item of participantes">{{item.nombre}}</option>
+            </select>
+          </mat-form-field>
+          <ng-container *ngIf="participanteId != undefined">
+          <div class="auth-form-button">
+            <button mat-raised-button color="" (click)="agregarParticipante()">Añadir participante</button>
+          </div>
+         </ng-container>
+        </div>
+        <div class="column right">
+          <div class="column">
+            <mat-card style="margin-top:5px" class="Posiciones">
+              <mat-card-title class="Posiciones">Participantes</mat-card-title>
+              <br>
+              <mat-list-item *ngFor="let participanteInscripto of participantesInscriptos">
+                <div style="margin-top:10px" mat-line>{{participanteInscripto.nombre}} </div>
+              </mat-list-item>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!dtCompetencia.estado">
+      Ganador: {{ganador.nombre}}
+      <hr>
+      <mat-card style="margin-top:5px" class="Posiciones">
+        <mat-card-title class="Posiciones">Posiciones</mat-card-title>
+        <br>
+        <mat-list-item *ngFor="let posicion of posiciones">
+          <div style="margin-top:10px" mat-line>{{posicion.nombre}}</div>
+        </mat-list-item>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="dtCompetencia.estado">
+      <hr>
+      <div class="pencas"><button mat-stroked-button class="enabled" style="margin-bottom:15px" style="margin-top:10px"
+          (click)="TerminarCompetencia()">Finalizar Competencia</button>
+      </div>
+    </ng-container>
+    
+  </mat-card>
+</section>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-pulse" [fullScreen]="true">
+</ngx-spinner>

@@ -1,0 +1,7 @@
+.bar-search{
+    background-color: rgb(91, 145, 177);
+    height: 56px;
+    width: 100%;
+    top: 0px;
+    z-index: 8;
+}

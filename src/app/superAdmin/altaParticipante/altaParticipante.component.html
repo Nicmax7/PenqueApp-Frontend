@@ -1,0 +1,35 @@
+<section class="container center-vh" *ngIf="isSuperAdmin()">
+   
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-pulse" 
+        [fullScreen] = "true">
+    </ngx-spinner>
+
+    <mat-card class="auth-card">
+        <h1 class="mat-h1 text-center">Registro de Participante</h1>
+        <hr>
+        <form class="auth-form-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" placeholder="Ingresa el nombre del participante" [formControl]="fullnameFormControl" (keyup.enter)="registrar()" required>
+                <mat-icon matSuffix>sentiment_satisfied</mat-icon>       
+            </mat-form-field>  
+            <mat-form-field appearance="fill">
+              <mat-label>Disciplina</mat-label>
+              <select matNativeControl [formControl]="disciplinaFormControl" (keyup.enter)="registrar()" required>
+                <option value ="vacio" selected> -- Selecciona una disciplina -- </option>
+                <option value="Natación">Natacion</option>
+                <option value="Ciclismo">Ciclismo</option>
+                <option value="Atletismo">Atletismo</option>
+              </select>
+            </mat-form-field>
+            <div class="auth-form-button">
+                <button mat-raised-button color="" (click)="registrar()">Registrar Participante</button>
+            </div> 
+        </form>
+    </mat-card>
+
+</section>

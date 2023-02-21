@@ -1,0 +1,83 @@
+<h1 class="mat-h1 text-center" *ngIf="isSuperAdmin()">Añadir un Partido a la Liga de Equipos</h1>
+
+<!--Local-->
+<div class="row">
+	<div class="column">
+		<mat-form-field>
+			<mat-label>País</mat-label>
+			<select matNativeControl [formControl]="paisLFormControl" (click)="cargarEquiposLocal()">
+				<option value="vacio" selected> -- Selecciona un país -- </option>
+				<option *ngFor="let pais of paises" [value]="pais">{{pais}}</option>
+			</select>
+		</mat-form-field>
+	</div>
+	<div class="column">
+		<ng-container *ngIf="dtLiga.tipoDeporte != 2 && paisL != 'Internacional'">
+			<mat-form-field>
+				<mat-label>División</mat-label>
+				<select matNativeControl [formControl]="divisionLControl" (click)="cargarEquiposLocal()">
+					<option value="vacio" selected> -- Selecciona una división -- </option>
+					<option value="Primera">Primera</option>
+					<option value="Segunda">Segunda</option>
+					<option value="Tercera">Tercera</option>
+				</select>
+			</mat-form-field>
+		</ng-container>
+	</div>
+</div>
+<mat-form-field appearance="fill">
+	<mat-label>Local</mat-label>
+	<select matNativeControl [formControl]="localControl" [(ngModel)]="LocalId" (click)="guardarIdLocal()" required>
+		<option value="undefined" selected> -- Equipo Local -- </option>
+		<option [value]="item.id" *ngFor="let item of equiposLocal">{{item.name}}</option>
+	</select>
+</mat-form-field>
+
+
+<!--visitante-->
+<div class="row">
+	
+	<div class="column">
+		<mat-form-field>
+			<mat-label>País</mat-label>
+			<select matNativeControl [formControl]="paisVFormControl" (click)="cargarEquiposVisitante()">
+				<option value="vacio" selected> -- Selecciona un país -- </option>
+				<option *ngFor="let pais of paises" [value]="pais">{{pais}}</option>
+			</select>
+		</mat-form-field>
+	</div>
+	<div class="column">
+		<ng-container *ngIf="dtLiga.tipoDeporte != 2 && paisV != 'Internacional'">
+			<mat-form-field>
+				<mat-label>División</mat-label>
+				<select matNativeControl [formControl]="divisionVControl" (click)="cargarEquiposVisitante()">
+					<option value="vacio" selected> -- Selecciona una división -- </option>
+					<option value="Primera">Primera</option>
+					<option value="Segunda">Segunda</option>
+					<option value="Tercera">Tercera</option>
+				</select>
+			</mat-form-field>
+		</ng-container>
+	</div>
+</div>
+<mat-form-field appearance="fill">
+	<mat-label>Visitante</mat-label>
+	<select matNativeControl [formControl]="visitanteControl" [(ngModel)]="VisitanteId" (click)="guardarIdVisitante()"
+		required>
+		<option value="undefined" selected> -- Equipo Visitante -- </option>
+		<option [value]="item.id" *ngFor="let item of equiposVisitante">{{item.name}}</option>
+	</select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+	<mat-label>Fecha</mat-label><br>
+	<mat-hint>Mes/Día/Año</mat-hint>
+	<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+	<mat-datepicker #picker></mat-datepicker>
+	<input matInput [matDatepicker]="picker" placeholder="Elija una fecha" [formControl]="dateFormControl"
+		(keyup.enter)="agregarPartido()" required>
+</mat-form-field>
+<div mat-dialog-actions>
+	<button mat-stroked-button class="enabled" style="margin-right:5px" (click)="onNoClick()">Cancelar</button>
+	<button mat-stroked-button class="enabled" style="margin-left:5px" (click)="agregarPartido()">Aceptar</button>
+</div>

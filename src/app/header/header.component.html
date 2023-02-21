@@ -1,0 +1,35 @@
+<div id="navbar">
+    <div class="navbar-container">
+        <div class="navbar">
+            <div class="logo-container">
+                <a routerLink='/userIndex'>   
+                    <img src="https://i.ibb.co/2YWQBfQ/sketch1664150883140.png" alt="" style="transform: matrix(1.88245, 0, 0, 1.88245, 0, 0); transform-origin: 50% 50%; max-height: none; transition: transform 200ms ease-in-out 0s;" width="80" height="60" viewBox="0 0 6060 1800">
+                </a>
+                </div>
+            <div class="actions-container">
+               <button class="navbar-user-btn" mat-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon>more_vert</mat-icon>
+                    <mat-icon >account_circle</mat-icon>
+                    
+                </button>
+                <mat-menu #userMenu="matMenu" xPosition="before">
+                    <button *ngIf="!isAuthenticated()" routerLink='/register' mat-menu-item>Regístrate</button>
+                    <button *ngIf="!isAuthenticated()" routerLink='/login' mat-menu-item>Iniciar sesión</button>
+                    <button *ngIf="isAuthenticated()" routerLink='mis/Pencas/Usuario' mat-menu-item>Mis Pencas</button>
+                    <button *ngIf="isAuthenticated()" routerLink='Usuario/casilla-mensajes' mat-menu-item>Casilla de Mensajes</button>
+                    <button *ngIf="isAuthenticated()" routerLink='/Usuario/me/billetera' mat-menu-item>Mis Billetera</button>
+                    <button *ngIf="isAuthenticated()" routerLink='AceptarRechazarEmpresa' mat-menu-item>Mis Invitaciones a Penca</button>
+                    <button *ngIf="isAuthenticated()" (click)="logout()" mat-menu-item>Cerrar sesión</button>
+                  </mat-menu>
+            </div>
+        </div>
+    </div>
+    <div class="filter-container">
+        <app-places-filter></app-places-filter>
+    </div>
+</div>
+
+<router-outlet id="user-routes"></router-outlet>
+
+
+

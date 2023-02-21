@@ -1,0 +1,97 @@
+<section class="container center-vh" *ngIf="isEmpresa()">
+  <ngx-spinner
+    bdColor="rgba(0, 0, 0, 0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-pulse"
+    [fullScreen]="true"
+  >
+  </ngx-spinner>
+
+  <mat-card class="auth-card">
+    <h1 class="mat-h1 text-center">Alta de Penca de Equipo: Empresa</h1>
+    <form class="auth-form-container">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Ingresa el nombre de la competencia"
+          [formControl]="fullnameFormControl"
+          required
+        />
+      </mat-form-field>
+
+      <br />
+      <mat-form-field>
+        <mat-label>Precio de Entrada</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Ingresa el precio de entrada"
+          [formControl]="entradaFormControl"
+          min="0"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Monto del Premio Final</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Ingresa el premio"
+          [formControl]="premioFormControl"
+          min="0"
+          required
+        />
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Deporte</mat-label>
+        <select
+          matNativeControl
+          [formControl]="disciplinaFormControl"
+          (click)="cargarLigas()"
+          required
+        >
+          <option value="vacio" selected>-- Selecciona un deporte --</option>
+          <option value="Futbol">Futbol</option>
+          <option value="BasketBall">BasketBall</option>
+          <option value="Tennis">Tennis</option>
+          <option value="VoleyBall">VoleyBall</option>
+        </select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Liga de Equipo</mat-label>
+        <select matNativeControl [(ngModel)]="seleccionado" equired>
+          <option value="vacio" selected>-- Selecciona una liga --</option>
+          <option [value]="item.id" *ngFor="let item of ligas">
+            {{ item.nombreLiga }}
+          </option>
+        </select>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+        <mat-label>Plan</mat-label>
+        <select
+          matNativeControl
+          [(ngModel)]="plan"
+          required
+          (click)="mensajeInfo()"
+        >
+          <option value="vacio" selected>
+            -- Selecciona un plan para tu penca --
+          </option>
+          <option value="Basico">Básico</option>
+          <option value="Premium">Premium</option>
+        </select>
+      </mat-form-field>
+      <br />
+      <div class="auth-form-button">
+        <button mat-raised-button color="" (click)="altaPencaEquipo()">
+          Dar de Alta
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</section>

@@ -1,0 +1,36 @@
+.place-card{
+    transition: all .2s ease-in-out; 
+    height: 90%;
+    min-height: 90%;
+    max-height: 350px;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+.place-card:hover{
+    display: grid;
+    grid-template-columns: 100%;
+    transform: scale(1.02);
+}
+.place-card-image{
+    display: flex;
+}
+.place-card-image img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+}
+.place-card-content{
+    display: grid;
+    margin-top: 1rem;
+}
+.place-card-content p {
+    margin: 0px;
+    font-size: 15px;
+}
+.place-card-content .place-card-content-title,
+.place-card-content .place-card-content-price span{
+    font-weight: 600;
+}
+.place-card-content .place-card-content-address{
+    font-weight: 300;
+}

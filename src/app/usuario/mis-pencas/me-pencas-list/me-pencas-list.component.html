@@ -1,0 +1,6 @@
+<div *ngIf="isAuthenticated() && isComun() " class="container">
+    <app-me-penca-feed class="grid" [pencas]="pencas"></app-me-penca-feed>
+    <div
+      infiniteScroll
+    ></div>
+</div>

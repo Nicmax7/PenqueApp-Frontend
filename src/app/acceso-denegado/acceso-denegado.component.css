@@ -1,0 +1,107 @@
+.auth-card{
+    width: 100%;
+    max-width: 480px;
+    padding: 15px 30px;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+.auth-card h2{
+    text-align: center;
+}
+.auth-form-container{
+    display: flex;
+    flex-direction: column;
+}
+.auth-form-container .auth-form-button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;   
+}
+.auth-form-container button{
+    height: 50px;
+    width: 100%;
+    text-transform: uppercase;
+}
+.auth-form-container .mat-icon{
+    color: rgba(0, 0, 0, 0.20);
+}
+.auth-form-container .mat-form-field-invalid .mat-icon{
+    color: #00ca8e;
+}
+.auth-form-container .auth-form-button{
+    margin-top: .5rem;
+}
+.auth-google {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+}
+
+.auth-card .hover-underline-animation:after  {
+    color: #00cfb4 !important;
+    background-color: #00cfb4 !important;;
+}
+.forgot-password {
+    margin-top: 1.5rem;
+    font-size: .9rem;
+    color: #00cfb4;
+}
+button{
+    background-color: #00cfb4;
+}
+
+mat-card {
+    background-color: beige;
+}
+
+mat-datepicker, mat-datepicker-toggle, mat-hint {
+    background-color: beige;
+    color: #414141;
+}
+input{
+    color: #3a3a3a;
+}
+input::placeholder{
+    color: rgb(0, 126, 126);
+}
+
+  
+  input:hover {
+    background-color: #3ebff1;
+  }
+h1, mat-label {
+    color: #3a3a3a;
+}
+
+p{
+    color: #3a3a3a;
+}
+input{
+    color: #3a3a3a;
+}
+input::placeholder{
+    color: rgb(0, 126, 126);
+}
+.container{
+    
+    background-image: url("https://img.freepik.com/vector-premium/ilustracion-vector-acceso-denegado-inicio-sesion-sistema-rechaza-contrasena-error-entrada-al-dispositivo-informatico-que-muestra-que-usuario-no-tiene-permiso-desarrollo-sitios-web-o-dispositivos-moviles_2175-1262.jpg");
+    background-repeat:no-repeat;
+    background-size: 100%;
+    padding-bottom: 800px;
+    border-radius: 30px;
+    border-color: #3a3a3a;
+}
+
+  
+  input:hover {
+    background-color: #3ebff1;
+  }
+@media(min-width: 640px){
+    .auth-card{
+        width: 100%;
+        max-width: 480px;
+        padding: 30px 60px;
+    }
+}

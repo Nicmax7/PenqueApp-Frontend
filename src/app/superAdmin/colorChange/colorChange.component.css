@@ -1,0 +1,110 @@
+.jumbotron{
+  color:#fff;
+  height: 500px;
+  position: relative;
+}
+.overlay{
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+}
+.jumbotron-content{
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+.contenido{
+  padding-bottom: 100px;
+}
+
+.b{
+  text-align: center;
+}
+.jumbotron-content input{
+  color:#fff;
+}
+.jumbotron input[type='radio']{
+  opacity: 0;
+}
+
+.select-active{
+  color: white;
+  background: #3F51B5;
+  border-radius: 50%;
+}
+
+.penca-card{
+  transition: all .2s ease-in-out; 
+  height: 90%;
+  min-height: 90%;
+  max-height: 350px;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+.penca-card:hover{
+  display: grid;
+  grid-template-columns: 100%;
+  transform: scale(1.02);
+}
+.penca-card-image{
+  display: flex;
+}
+.penca-card-image img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+}
+.penca-card-content{
+  display: grid;
+  margin-top: 1rem;
+}
+.penca-card-content p {
+  margin: 0px;
+  font-size: 15px;
+}
+.penca-card-content .penca-card-content-title,
+.penca-card-content .penca-card-content-price span{
+  font-weight: 600;
+}
+.penca-card-content .penca-card-content-address{
+  font-weight: 300;
+}
+
+.penca-card-content-title{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+button{
+  background-color: #00cfb4;
+  width: 90px;
+  margin-left: 5px;
+  color: beige;
+}
+button:hover {
+  background-color: #62deae;
+}
+.penca-card-content-button{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.penca-card-content-price {
+  text-align: right;
+}
+
+input{
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  font-family: inherit;
+  padding: 0.25em 0.5em;
+  background-color: #fff;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+}

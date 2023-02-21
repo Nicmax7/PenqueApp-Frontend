@@ -1,0 +1,17 @@
+<h5><u><i>Barra de Busqueda Base</i></u></h5>
+<form class="example-form">
+<mat-form-field class="bar-search">
+<span matPrefix> </span>
+<input type="tel" matInput placeholder="Buscar" name= "search" [(ngModel)]= "searchTerm">
+<button matSuffix mat-button (click)="busqueda()"><mat-icon >search</mat-icon></button>
+</mat-form-field>
+
+<div *ngIf="isAuthenticated() && isComun()" class="container">
+  <app-penca-feed class="grid" [pencasCompartida]="pencasCompartida"></app-penca-feed>
+  <div
+    infiniteScroll
+  ></div>
+</div>
+</form>
+
+

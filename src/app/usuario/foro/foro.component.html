@@ -1,0 +1,64 @@
+<section class="container center-vh" *ngIf="isComun()">
+  <mat-card class="pencas-card">
+    <h2 class="mat-h1 text-center" class="colorP">Foro</h2>
+    <hr />
+    <!-- Contenedor Principal -->
+    <div class="comments-container">
+      <h2 class="colorP">Comentarios</h2>
+      <div class="card-footer py-3 border-0" style="background-color: #484444">
+        <div class="d-flex flex-start w-100">
+          <div class="form-outline w-100">
+            <textarea
+              class="form-control"
+              id="textAreaExample"
+			  [formControl]="comentarioFormControl"
+              rows="4"
+              style="background: rgb(174, 255, 225)"
+            ></textarea>
+          </div>
+        </div>
+        <br />
+        <div class="float-end mt-2 pt-1">
+          <button
+            mat-raised-button
+            type="button"
+            class="btn btn-primary btn-sm"
+			(click)="comentar()"
+          >
+            Enviar al Foro
+          </button>
+        </div>
+      </div>
+      <br />
+      <hr />
+      <ul id="comments-list" class="comments-list">
+        <li *ngFor="let comentario of mensajes">
+          <div class="comment-main-level">
+            <!-- Avatar -->
+            <div class="comment-avatar">
+              <img
+                src="https://cdn0.iconfinder.com/data/icons/usefull-geo-points-for-maps/512/man-body-person-deep-blue-square-512.png"
+                alt=""
+              />
+            </div>
+            <!-- Contenedor del Comentario -->
+            <br /><br />
+            <div class="comment-box">
+              <div class="comment-head">
+                <h6 class="comment-name">
+                  <a>{{ comentario.usuario }}</a>
+                </h6>
+
+                <i class="fa fa-reply"></i>
+                <i class="fa fa-heart"></i>
+              </div>
+              <div class="comment-content">
+                {{ comentario.mensaje }}
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </mat-card>
+</section>

@@ -1,0 +1,59 @@
+.penca-card{
+    transition: all .2s ease-in-out; 
+    height: 100%;
+    min-height: 100%;
+    max-height: 350px;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    padding: 2.5em;
+    margin-bottom: 15px;
+}
+.penca-card:hover{
+    display: grid;
+    grid-template-columns: 100%;
+    transform: scale(1.02);
+}
+.penca-card-image{
+    display: flex;
+}
+.penca-card-image img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+}
+.penca-card-content{
+    display: grid;
+    margin-top: 1rem;
+}
+.penca-card-content p {
+    margin: 0px;
+    font-size: 15px;
+}
+.penca-card-content .penca-card-content-title,
+.penca-card-content .penca-card-content-price span{
+    font-weight: 600;
+}
+.penca-card-content .penca-card-content-address{
+    font-weight: 300;
+}
+
+.penca-card-content-title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+button{
+    background-color: #00cfb4;
+    width: 100px;
+    text-align: center;
+    margin-top: -20px;
+}
+.penca-card-content-button{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.penca-card-content-price {
+    text-align: right;
+}
+

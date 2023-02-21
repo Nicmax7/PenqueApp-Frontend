@@ -1,0 +1,37 @@
+<section class="container center-vh" *ngIf="isSuperAdmin()">
+   
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-pulse" 
+        [fullScreen] = "true">
+    </ngx-spinner>
+
+    <mat-card class="auth-card">
+        <h1 class="mat-h1 text-center">Registro de Administrador</h1>
+        <hr>
+        <form class="auth-form-container">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Ingresa tu email" [formControl]="emailFormControl" type="email" (keyup.enter)="register()" required>
+                <mat-icon matSuffix>alternate_email</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Nombre completo</mat-label>
+                <input matInput type="text" placeholder="Ingresa tu nombre" [formControl]="fullNameFormControl" (keyup.enter)="register()" required>
+               <mat-icon matSuffix>sentiment_satisfied</mat-icon>
+            </mat-form-field>            
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input matInput id="register-passowrd" type="{{ visibility ? 'password' : 'text' }}" placeholder="Ingresa tu contraseña" [formControl]="passwordFormControl" (keyup.enter)="register()" required>
+                <mat-icon matSuffix (click)="toggleVisibility()">{{ visibility ? 'visibility' : 'visibility_off' }}</mat-icon>
+           </mat-form-field>
+           
+           
+            <div class="auth-form-button">
+                <button mat-raised-button color="" (click)="register()">Registrarme</button>
+            </div>
+        </form>
+    </mat-card>
+</section>

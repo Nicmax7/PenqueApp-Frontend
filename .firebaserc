@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "penqueapp-bf198"
+  },
+  "targets": {
+    "penqueapp-bf198": {
+      "hosting": {
+        "FrontEnd": [
+          "penqueapp-bf198"
+        ]
+      }
+    }
+  }
+}

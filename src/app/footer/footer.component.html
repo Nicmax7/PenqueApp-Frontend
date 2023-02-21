@@ -1,0 +1,20 @@
+<footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-first-item">
+            <div class="footer-logo-container">
+                <img src="https://i.ibb.co/2YWQBfQ/sketch1664150883140.png" alt="" style="transform: matrix(1.88245, 0, 0, 1.88245, 0, 0); transform-origin: 50% 50%; max-height: none; transition: transform 200ms ease-in-out 0s;" width="120" height="90" viewBox="0 0 6060 1800">
+           
+                <p>Juega en las pencas del momento.</p>
+            </div>
+        </div>
+        <div class="footer-second-item"></div>
+        <div class="footer-third-item"></div>
+        <div class="footer-four-item">
+            <h3 *ngIf="isAdmin() && (isAuthenticated() || !isAuthenticated())" class="mat-h3">Cuenta</h3>
+            <a *ngIf="!isAuthenticated()" routerLink='/register' class="hover-underline-animation">Regístrate</a>
+            <a *ngIf="isAuthenticated() && isAdmin()" routerLink='Admin/Saldo' class="hover-underline-animation">Mi Saldo Actual</a>
+            <a *ngIf="!isAuthenticated()" routerLink='/login' class="hover-underline-animation">Iniciar sesión</a>
+         </div>
+    </div>
+    <div class="footer-copyright"><p>© Copyright 2022, PenqueApp</p></div>
+</footer>

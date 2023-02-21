@@ -1,0 +1,26 @@
+.Admin { 
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; 
+    overflow-x: hidden;
+    background-image: url("https://wallpaperaccess.com/full/16668.jpg");
+  }
+
+  .Super { 
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; 
+    overflow-x: hidden;
+    background-image: url("https://paper-leaf.com/app/uploads/2010/02/Gears1280.jpg");
+  }
+
+  .empresa{ 
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; 
+    overflow-x: hidden;
+    background-image: url("https://somosnuma.com/wp-content/uploads/2021/03/BLOG-HEADER_NUMA-7.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+.espacio{
+  margin-bottom: 550px;
+}

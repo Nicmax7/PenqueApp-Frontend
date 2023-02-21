@@ -1,0 +1,157 @@
+body { 
+  margin: 0; 
+  font-family: 'Poppins', sans-serif; 
+  overflow-x: hidden;
+  background-image: url("https://wallpaperaccess.com/full/16668.jpg");
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.table{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.mat-column-photo {
+  width: 10%;
+ 
+}
+
+.mat-column-title {
+  max-width: 250px;
+}
+
+.mat-column-actions {
+  max-width: 100%;
+}
+
+img{
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+}
+
+td{
+  text-align: center !important;
+  vertical-align: middle !important;
+  height: 130px;
+  
+}
+
+:host ::ng-deep .mat-sort-header-container { 
+  display: flex;  
+  justify-content: center; 
+}
+
+th.mat-header-cell, td.mat-cell { 
+  text-align: center; 
+  padding-right: 20px;
+}
+
+
+button{
+  background-color: #00cfb4;
+}
+
+.FStatus{
+  background-color: rgba(11, 89, 255, 0.603);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+
+}
+.BStatus{
+  background-color: rgba(247, 111, 0, 0.815);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+.TStatus{
+  background-color: rgba(138, 255, 70, 0.774);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+
+.VStatus{
+  background-color: rgba(255, 238, 0, 0.877);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+.CStatus{
+  background-color: rgba(113, 238, 255, 0.925);
+  text-align: center !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.007) !important;
+  border-radius: 30px !important;
+  padding: 3px 15px 3px 15px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.151);
+  border-width: 0.2px;
+}
+
+.mat-sort-header-container, .th{
+  align-items: right;
+  text-align: right;
+}
+
+a{
+  color: antiquewhite;
+}
+a:hover{
+  color: rgb(46, 255, 168);
+}
+
+@media(max-width: 760px){
+  .mat-column-photo {
+    display: none;
+  }
+  img{
+    display: none;
+  }
+
+  .mat-column-title {
+    max-width: 100px;
+    text-align: left !important;
+    height: 80px;
+    white-space:nowrap;
+    overflow:hidden;
+   text-overflow:ellipsis;
+  }
+  .mat-column-price {
+    display: none;
+  }
+  td{
+    text-align: center !important;
+    vertical-align: middle !important;
+    width: 100%;
+  }
+  .mat-column-status{
+   display: none;
+  }
+  
+}

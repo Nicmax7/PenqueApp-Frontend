@@ -1,0 +1,96 @@
+
+.navbar{
+    margin-top: 8rem;
+    background-color: #171717;
+    color: #fff;
+}
+.navbar-container{
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 8;
+    background-color: #fff;
+}
+.navbar{
+    
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background: rgb(110,255,205);
+    background: linear-gradient(90deg, rgb(19, 19, 19) 0%, rgb(17, 17, 17) 35%, rgb(13, 13, 13) 100%);
+}
+.logo-container svg{
+    cursor: pointer;
+}
+.actions-container{
+    display: flex;
+}
+.actions-container .navbar-profile-picture img,
+.actions-container .navbar-profile-picture {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+::ng-deep .navbar-user-btn{
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    box-shadow: unset !important;
+    height: 42px;
+}
+::ng-deep .navbar-user-btn .cdk-overlay-pane{
+    border-radius: 12px;
+}
+::ng-deep  .navbar-user-btn mat-icon{
+    color: rgba(0, 0, 0, 0.6);
+}
+::ng-deep  .navbar-user-btn .mat-button-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+mat-icon{
+    color: #fff;
+}
+
+::ng-deep .cdk-overlay-container .mat-menu-item{
+    font-size: 15px;
+    padding: 0 1.5rem;
+    font-weight: 300;
+    height: 2.5rem;
+    font-weight: 300;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.combito{
+    color: aquamarine;
+}
+
+::ng-deep .cdk-overlay-container .mat-menu-panel{
+    border-radius: 12px;
+}
+
+::ng-deep .actions-container .mat-stroked-button{
+    box-shadow: unset !important;
+    border: unset;
+    margin-right: 1rem;
+}
+@media (max-width: 640px) {
+    ::ng-deep .actions-container .mat-stroked-button{
+        display: none;
+    }
+}
+@media (min-width: 768px) {
+    .navbar{
+        padding: 0 55px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar{
+        padding: 0 55px;
+    }
+}

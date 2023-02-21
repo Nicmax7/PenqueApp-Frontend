@@ -1,0 +1,89 @@
+<section *ngIf="isSuperAdmin() " class="container center-vh">
+  <mat-card class="pencas-card">
+    <h1 class="mat-h1 text-center">{{dtPenca.nombre}}</h1>
+    <hr><br>
+    <div>
+      <mat-card-subtitle>Fecha: {{dtPenca.fecha_Creacion}}</mat-card-subtitle>
+      <mat-card-subtitle>Entrada: {{dtPenca.entrada}}</mat-card-subtitle>
+      <mat-card-subtitle>Pozo: {{dtPenca.pozo}}</mat-card-subtitle>
+    </div>
+    <ng-container *ngIf="!tieneAdmin">
+      <div class="auth-form-button">
+        <button mat-raised-button color="" (click)="asignarAdmin()">Asignar Administrador </button>
+      </div>
+    </ng-container>
+    <hr>
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Photo Column -->
+      <ng-container matColumnDef="photos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <mat-cell *matCellDef="let row" style=" padding-top: 20px;">
+          <div *ngIf="row.area == 0"><img
+              src="https://static.vecteezy.com/system/resources/previews/006/303/712/non_2x/blue-swimming-logo-with-abstract-man-silhouette-vector.jpg" />
+          </div>
+          <div *ngIf="row.area == 1"><img
+              src="https://static.vecteezy.com/system/resources/previews/006/721/115/non_2x/bicycle-bike-icon-logo-design-cycling-concept-template-vector.jpg" />
+          </div>
+          <div *ngIf="row.area == 2"><img
+              src="https://img.freepik.com/vector-premium/concurso-corriendo-atletismo-femenino-logo-vector_586862-26.jpg" />
+          </div>
+          <div *ngIf="row.area >= 3"><img
+              src="https://us.123rf.com/450wm/lumut/lumut1604/lumut160400077/55662034-gente-de-la-diversi%C3%B3n-vida-saludable-plantilla-icono-logo.jpg" />
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <!-- title Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+        <td mat-cell *matCellDef="let row" class="title">{{row.nombre}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+        <td mat-cell *matCellDef="let row">{{row.fecha_string}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Cant. Participantes">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cant. Participantes </th>
+        <td mat-cell *matCellDef="let row">{{row.topeParticipantes}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Area">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Area </th>
+        <td mat-cell *matCellDef="let row"><span *ngIf="row.area == 0 " class="FStatus">Natacion</span>
+          <span *ngIf="row.area == 1" class="BStatus">Ciclismo</span>
+          <span *ngIf="row.area == 2" class="TStatus">Atletismo</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header t> Estado </th>
+        <td mat-cell *matCellDef="let row">
+          <span *ngIf="row.estado" class="EStatus">Pendiente</span>
+          <span *ngIf="!row.estado" class="EStatus">Finalizada</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+        <td mat-cell *matCellDef="let row" class="id"> {{row.id}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="6">Ups! Aún no tienes pencas que administrar :(</td>
+      </tr>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="totalRows" [pageIndex]="pageNumber" [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions" aria-label="Select page">
+    </mat-paginator>
+
+
+  </mat-card>
+</section>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-pulse" [fullScreen]="true">
+</ngx-spinner>

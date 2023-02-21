@@ -1,0 +1,16 @@
+<section class="container " *ngIf="isComun()">
+  <mat-card class="pencas-card">
+    <mat-list>
+      <h2 class="mat-h1" class="colorP">Casilla de Mensajes</h2>
+      <mat-list-item *ngFor="let chat of chats">
+        <div class="row" (click)="entrarAlChat(chat.empresa,chat.idempresa,chat.id)">
+          <div class="col-3"></div>
+            <div class="text-left">
+              <mat-icon class="icon-display">supervised_user_circle</mat-icon>
+              <p class="">{{ chat.empresa }}</p>
+            </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</section>

@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Selecciona el color de la Penca</h1>
+<div mat-dialog-content class="contenido">
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          [(colorPicker)]="color1"
+          [cpPresetColors]="[
+            '#7B1FA2',
+            '#039BE5',
+            '#FF5252',
+            '#D32F2F',
+            '#283593'
+          ]"
+          [cpPosition]="'left'"
+          [style.background]="color1"
+          [cpAlphaChannel]="'always'"
+          [cpOutputFormat]="'hex'"
+          [value]="color1"
+        />
+      </div>
+    </div>
+    <br />
+    <div mat-dialog-actions class="b">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-raised-button mat-button cdkFocusInitial mat-dialog-close (click)="colorChange()">
+        Confirmar
+      </button>
+    </div>
+  </div>
+</div>

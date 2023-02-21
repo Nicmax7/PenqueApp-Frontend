@@ -1,0 +1,121 @@
+<section *ngIf="isSuperAdmin() " class="container center-vh">
+  <mat-card class="ligas-card">
+    <h1 class="mat-h1 text-center">Ligas</h1>
+
+    <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Equipos"> 
+        <hr>
+        <div class="ligas"><button  mat-stroked-button class="enabled" style="margin-left:5px" (click)="crearLigaEquipo()">Nueva Liga de Equipos</button></div>
+        <hr>
+        <mat-form-field appearance="fill">
+          <mat-label>Deporte</mat-label>
+          <select matNativeControl [formControl]="deporte" required (click)="mostrarLigasEquipos()">
+            <option value="vacio" selected> -- Selecciona un Deporte -- </option>
+            <option value="Futbol">Fútbol</option>
+            <option value="Basketball">Basquetbol</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Voley">Voley</option>
+          </select>
+        </mat-form-field>
+        <input matInput type="text" (keyup)="applyFilterE($event)" placeholder="Nombre de la liga">
+        <hr>
+        <br>
+        <mat-table #table [dataSource]="dataSourceE" matSort >
+        <ng-container matColumnDef="photos">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <mat-cell *matCellDef="let row" style=" padding-top: 20px;">
+            <div *ngIf="Numero(row.tipoDeporte) == 0 " class="imgstatus"><img src="https://img.freepik.com/vector-premium/logotipo-futbol-boot-patea-pelota-ilustracion-vectorial_183342-393.jpg" /></div>
+            <div *ngIf="Numero(row.tipoDeporte) == 1 " class="imgstatus"><img src="https://img.freepik.com/premium-vector/basketball-logo_260747-419.jpg" /></div>
+            <div *ngIf="Numero(row.tipoDeporte) == 2"  class="imgstatus"><img src="https://img.freepik.com/premium-vector/tennis-logo-icon-design-sports-badge-template-vector-illustration_630259-74.jpg" /></div>
+            <div *ngIf="Numero(row.tipoDeporte) == 3 " class="imgstatus"><img src="https://i.pinimg.com/736x/9c/c2/05/9cc20507041e1dbfc1f772ac42b43390.jpg" /></div>
+            <div *ngIf="Numero(row.tipoDeporte) == 4 " class="imgstatus"><img src="https://i.pinimg.com/originals/6f/35/0d/6f350d177d15776f7874b5c4d0e68a5b.jpg" /></div>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let row" class="title">{{row.nombreLiga}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header t> Ver </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-stroked-button class="enabled" style="margin-left:5px" (click)="configurarLigaEquipo(row.id, row.tipoDeporte)"><mat-icon>settings</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="3">No existen ligas de este tipo</td>
+        </tr>
+        </mat-table>
+  
+        <mat-paginator #paginator [length]="totalRows" [pageIndex]="pageNumber" [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"  aria-label="Select page">
+        </mat-paginator>
+      </mat-tab>
+      
+      <mat-tab label="Individuales">
+        <hr>
+        <div class="ligas"><button  mat-stroked-button class="enabled" style="margin-left:5px" (click)="crearLigaIndividual()">Nueva Liga Individual</button></div>
+        <hr>
+        <mat-form-field appearance="fill">
+          <mat-label>Deporte</mat-label>
+          <select matNativeControl [formControl]="disciplina" required (click)="mostrarLigasIndividuales()">
+            <option value="vacio" selected> -- Selecciona una Disciplina -- </option>
+            <option value="Natacion">Natación</option>
+            <option value="Ciclismo">Ciclismo</option>
+            <option value="Atletismo">Atletismo</option>
+          </select>
+        </mat-form-field>
+
+        <input matInput type="text" (keyup)="applyFilterI($event)" placeholder="Nombre de la liga">
+        <hr>
+        <br>
+        <mat-table #table [dataSource]="dataSourceI" matSort >
+        <ng-container matColumnDef="photos">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <mat-cell *matCellDef="let row" style=" padding-top: 20px;">
+            <div  *ngIf="Numero(row.tipoArea) == 0 " class="imgstatus"><img src="https://static.vecteezy.com/system/resources/previews/006/303/712/non_2x/blue-swimming-logo-with-abstract-man-silhouette-vector.jpg" /></div>
+            <div  *ngIf="Numero(row.tipoArea) == 1 "  class="imgstatus"><img src="https://static.vecteezy.com/system/resources/previews/006/721/115/non_2x/bicycle-bike-icon-logo-design-cycling-concept-template-vector.jpg" /></div>
+            <div  *ngIf="Numero(row.tipoArea) == 2 " class="imgstatus"><img src="https://img.freepik.com/vector-premium/concurso-corriendo-atletismo-femenino-logo-vector_586862-26.jpg" /></div>
+            <div  *ngIf="Numero(row.tipoArea) == 3 "  class="imgstatus"><img src="https://us.123rf.com/450wm/lumut/lumut1604/lumut160400077/55662034-gente-de-la-diversi%C3%B3n-vida-saludable-plantilla-icono-logo.jpg" /></div>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let row" class="title">{{row.nombre}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header t> Ver </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-stroked-button class="enabled" style="margin-left:5px" (click)="configurarLigaIndividual(row.id)"><mat-icon>settings</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="3">No existen ligas de este tipo</td>
+        </tr>
+        </mat-table>
+  
+        <mat-paginator #paginator [length]="totalRows" [pageIndex]="pageNumber" [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"  aria-label="Select page">
+        </mat-paginator>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</section>
+<ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-pulse" 
+        [fullScreen] = "true">
+</ngx-spinner>

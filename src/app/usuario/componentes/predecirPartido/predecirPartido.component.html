@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Predecir un partido</h1>
+<div mat-dialog-content>
+  Selecciona tu prediccion hacia este partido:
+</div>
+<br>
+<mat-form-field appearance="fill">
+  <mat-label>Select an option</mat-label>
+  <mat-select [(ngModel)]="selected">
+    <mat-option value="option0">Selecciona</mat-option>
+    <mat-option value="option1">Ganará Local</mat-option>
+    <mat-option value="option2">Ganará Visitante</mat-option>
+    <mat-option *ngIf="deporte == 0" value="option3">Empate</mat-option>
+  </mat-select>
+</mat-form-field>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <br>
+  <button mat-raised-button mat-button cdkFocusInitial mat-dialog-close (click)="predecirUnPartido()">Confirmar</button>
+</div>

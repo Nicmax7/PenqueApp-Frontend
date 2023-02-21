@@ -1,0 +1,27 @@
+<body class="" *ngIf="!isAdmin() && !isSuperAdmin() && !isEmpresa() && !isComun()">
+    <app-header></app-header>
+    <app-login></app-login>
+    <app-footer></app-footer>   
+</body>
+<body class="" *ngIf="isComun()">
+    <app-header></app-header>
+    
+    <app-footer></app-footer>   
+</body>
+<router-outlet></router-outlet>
+<body class="Admin" *ngIf="isAdmin()">
+    <app-headerA></app-headerA>
+    
+    <app-footer></app-footer>   
+</body>
+
+<body class="Super" *ngIf="isSuperAdmin()">
+    <app-headerS></app-headerS>
+    
+    <app-footer></app-footer>   
+</body>
+<body class="empresa" *ngIf="isEmpresa()">
+    <app-headerE></app-headerE>
+    
+    <app-footer></app-footer>   
+</body>

@@ -1,0 +1,105 @@
+<section  class="container center-vh" *ngIf="isSuperAdmin()">
+  <mat-card class="pencas-card">
+    <h1 class="mat-h1 text-center">Mis Pencas: Configuración</h1>
+    <hr>
+    <mat-form-field appearance="fill">
+    <mat-label>Deporte</mat-label>
+              <select matNativeControl [formControl]="deporte" required (click)="mostrarPencas()">
+                <option  value = "vacio" selected> -- Selecciona un Deporte -- </option>
+                <option value="Futbol">Futbol</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Tennis">Tennis</option>
+                <option value="Voley">Voley</option>
+                <option value="Competencia">Competencia</option>
+              </select>
+            </mat-form-field>
+    <div class="pencas"><button  mat-stroked-button class="enabled" style="margin-left:5px" (click)="crearPencaEquipo()">Agregar Penca Equipo</button><button  mat-stroked-button class="enabled" style="margin-left:5px" (click)="crearPencaIndividual()">Agregar Penca Individual</button>
+    </div>
+    <hr>
+    <br>
+      <mat-table #table [dataSource]="dataSource" matSort >
+      <!-- Photo Column -->
+      <ng-container matColumnDef="photos">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+        <mat-cell *matCellDef="let row" style=" padding-top: 20px;">
+          <div *ngIf="Numero(row.tipoDeporte) == 0 " class="imgstatus"><img src="https://img.freepik.com/vector-premium/logotipo-futbol-boot-patea-pelota-ilustracion-vectorial_183342-393.jpg" /></div>
+          <div *ngIf="Numero(row.tipoDeporte) == 1 " class="imgstatus"><img src="https://img.freepik.com/premium-vector/basketball-logo_260747-419.jpg" /></div>
+          <div *ngIf="Numero(row.tipoDeporte) == 2"  class="imgstatus"><img src="https://img.freepik.com/premium-vector/tennis-logo-icon-design-sports-badge-template-vector-illustration_630259-74.jpg" /></div>
+          <div *ngIf="Numero(row.tipoDeporte) == 3 " class="imgstatus"><img src="https://i.pinimg.com/736x/9c/c2/05/9cc20507041e1dbfc1f772ac42b43390.jpg" /></div>
+          <div *ngIf="Numero(row.tipoDeporte) == 4 " class="imgstatus"><img src="https://i.pinimg.com/originals/6f/35/0d/6f350d177d15776f7874b5c4d0e68a5b.jpg" /></div>
+        </mat-cell>
+      </ng-container>
+   
+        <!-- title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+          <td mat-cell *matCellDef="let row" class="title">{{row.nombre}}</td>
+        </ng-container>
+
+    
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio Entrada </th>
+          <td mat-cell *matCellDef="let row">${{row.entrada}} </td>
+        </ng-container>
+
+    
+        <ng-container matColumnDef="deporte">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Deporte </th>
+          <td  mat-cell *matCellDef="let row" ><span *ngIf="row.tipoDeporte == 0 " class="FStatus">Futbol</span>
+            <span *ngIf="row.tipoDeporte == 1" class="BStatus">Basquetball</span>
+            <span *ngIf="row.tipoDeporte == 2" class="TStatus">Tenis</span>
+            <span *ngIf="row.tipoDeporte == 3" class="VStatus">Voley</span>
+            <span *ngIf="row.tipoDeporte == 4" class="CStatus">Competencia</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo Penca </th>
+          <td  mat-cell *matCellDef="let row" ><span *ngIf="row.tipoPenca == 0 " class="CCStatus">Compartida</span>
+            <span *ngIf="row.tipoPenca == 1" class="EEStatus">Empresa</span>
+          </td>
+        </ng-container>
+
+         <ng-container matColumnDef="enabled">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header t> Ver </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-stroked-button class="enabled" style="margin-left:5px" (click)="verPenca(row.id, row.idLiga, row.tipo_Liga, row.tieneAdmin)"><mat-icon>pageview</mat-icon></button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="color">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header t> Editar Color </th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-stroked-button class="color" style="margin-left:5px"  (click)="openDialog('0ms', '0ms', row.id)"><mat-icon>brush</mat-icon></button>
+          </td>
+        </ng-container>
+        
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+          <td mat-cell *matCellDef="let row" class="id"> {{row.id}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="6">Ups! Seleciona el tipo de deporte por el cual deseas ver las pencas</td>
+        </tr>
+      </mat-table>
+
+      <mat-paginator #paginator [length]="totalRows" [pageIndex]="pageNumber" [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"  aria-label="Select page">
+    </mat-paginator>
+
+
+    </mat-card>
+</section>
+<ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-pulse" 
+        [fullScreen] = "true">
+</ngx-spinner>

@@ -1,0 +1,74 @@
+.scrollarea {
+  min-height: 500px;
+}
+
+div {
+  font-family: cursive;
+}
+
+.containerr {
+  background-color: rgb(232, 255, 247);
+  background-image: url("https://theabbie.github.io/blog/assets/official-whatsapp-background-image.jpg");
+  color: black;
+}
+
+.usuario{
+  width: 200px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: rgb(58, 58, 58);
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 20px;
+  transition: width 0.4s ease-in-out;
+  color: rgb(255, 255, 255);
+}
+
+input {
+  width: 95%;
+  height: 100px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  margin: 10px -80px 10px 10px;
+}
+
+.derecha {
+  text-align: right;
+  margin-right: 10px;
+}
+
+.izquierda {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.smallI {
+  border-radius: 25px;
+  background: rgb(54, 242, 79);
+  background: linear-gradient(
+    0deg,
+    rgba(54, 242, 79, 1) 0%,
+    rgb(75, 255, 153) 100%
+  );
+  padding: 10px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.smallD {
+  border-radius: 25px;
+  background: rgb(54, 242, 234);
+  background: linear-gradient(
+    0deg,
+    rgba(54, 242, 234, 1) 0%,
+    rgba(75, 203, 255, 1) 100%
+  );
+  padding: 10px;
+  position: relative;
+  margin-left: 10px;
+}

@@ -1,0 +1,33 @@
+<div class="espacio">
+    <mat-card class="penca-card" [ngClass]="'Penca' + pencas.tipoPenca ">
+        <div class="penca-card-content">
+            <div class="penca-card-image">
+                <img *ngIf="Numero(pencas.tipo_Deporte) == 0 " src="https://img.freepik.com/vector-premium/logotipo-futbol-boot-patea-pelota-ilustracion-vectorial_183342-393.jpg">
+                <img *ngIf="Numero(pencas.tipo_Deporte) == 1 " src="https://img.freepik.com/premium-vector/basketball-logo_260747-419.jpg">
+                <img *ngIf="Numero(pencas.tipo_Deporte) == 2 " src="https://img.freepik.com/premium-vector/tennis-logo-icon-design-sports-badge-template-vector-illustration_630259-74.jpg">
+                <img *ngIf="Numero(pencas.tipo_Deporte) == 3 " src="https://media.istockphoto.com/id/1398748252/vector/classic-volley-club-logo-tournament-volleyball-design-vector-on-white-background.jpg?s=612x612&w=0&k=20&c=JLgMqsZReDH2XzuO0IEubm58807P_8_62xeBfdlQTf8=">
+                <img *ngIf="Numero(pencas.tipo_Deporte) == 4 " src="https://i.pinimg.com/originals/6f/35/0d/6f350d177d15776f7874b5c4d0e68a5b.jpg">
+            </div>
+            <br>
+            <div class="penca-card-content-title">
+                <p>{{ pencas.nombre }}</p>
+            </div>
+            <div class="penca-card-content-title mat-hint">
+                <p *ngIf="Numero(pencas.tipo_Deporte) == 0 ">Deporte: Futbol</p>
+                <p *ngIf="Numero(pencas.tipo_Deporte) == 1 ">Deporte: Basketball</p>
+                <p *ngIf="Numero(pencas.tipo_Deporte) == 2 ">Deporte: Tenis</p>
+                <p *ngIf="Numero(pencas.tipo_Deporte) == 3 ">Deporte: Voley</p>
+                <p *ngIf="Numero(pencas.tipo_Deporte) == 4 ">Deporte: Competencia</p>
+            </div>
+            <div class="penca-card-content-title mat-hint">
+                <p *ngIf="pencas.tipoPenca == 0 ">Tipo de Penca: Compartida</p>
+                <p *ngIf="pencas.tipoPenca == 1 ">Tipo de Penca: Empresa</p>
+            </div>
+            <div class="penca-card-content-button">
+                <button  mat-raised-button (click)="verPenca(pencas.id, pencas.tipo_Deporte, pencas.color)">Ver</button>
+                <button  mat-raised-button class="foro" (click)="verForo(pencas.id)">Foro</button>
+            </div>
+        </div>
+    </mat-card>
+</div>
+    

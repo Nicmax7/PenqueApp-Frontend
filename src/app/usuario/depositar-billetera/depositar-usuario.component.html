@@ -1,0 +1,46 @@
+<section class="container" *ngIf="isComun()">
+  <mat-card class="pencas-card">
+    <h1 class="mat-h1 text-center">Saldo Actual</h1>
+    <div class="billetera">
+        <p class="text-center b">
+           $ {{userData.billetera}}
+        </p>
+    </div>
+    <br><hr>
+    <h1 class="mat-h1 text-center">Deposita en tu billetera</h1>
+    <br>
+    <form class="create-form-container create-booking">
+      <div class="auth-form-button">
+        <mat-form-field *ngIf="!pago">
+          <mat-label>Monto a depositar</mat-label>
+          <input
+            [formControl]="dineroFormControl"
+            matInput
+            type="number"
+            placeholder="Ingresa tu monto"
+            required
+          />
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+        <br>
+        <div class="create-form-button">
+            <button mat-raised-button color="basic" (click)="habilitarPaypal()">Continuar al pago</button>
+        </div>
+        <br>
+        <div *ngIf="!token && pago" class="text-center">
+          <p>
+            Aqui puedes depositar en tu billetera para tener fondos en tu cuenta
+          </p>
+          <ngx-paypal *ngIf="!showPaypalButtons" [config]="payPalConfig"
+            >Pagar con paypal>
+          </ngx-paypal>
+        </div>
+        <div *ngIf="token" class="payment-success">
+          <mat-icon>check_circle</mat-icon>
+          <p>pago procesado correctamente!</p>
+        </div>
+      </div>
+      <br />
+    </form>
+  </mat-card>
+</section>

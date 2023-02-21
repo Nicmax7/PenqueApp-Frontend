@@ -1,0 +1,42 @@
+<section class="container center-vh" *ngIf="isComun()">
+  <mat-card class="pencas-card" [ngStyle]=" {'background-color': color }">
+    <mat-list>
+      <h2 class="mat-h1 text-center" class="colorP">Competencias</h2>
+      <div class="dashboard"><button (click)="goDashBoard()" mat-stroked-button class="enabled"
+          style="margin-left:5px">Posiciones</button>
+      </div>
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Pendientes">
+          <mat-list-item *ngFor="let competencia of competencias">
+            <ng-container *ngIf="competencia.estado">
+              <div class="row">
+                <div class="col" (click)="goCompetencia(competencia.id)">
+                  <div class="">
+                    <h4 class="center">{{competencia.fecha_string}}</h4>
+                    <h2 class="center">{{competencia.nombre}}</h2>
+                  </div>
+                  <p class="mb-1"></p>
+                </div>
+              </div>
+            </ng-container>
+          </mat-list-item>
+        </mat-tab>
+        <mat-tab label="Finalizadas">
+          <mat-list-item *ngFor="let competencia of competencias">
+            <ng-container *ngIf="!competencia.estado">
+              <div class="row">
+                <div class="col" (click)="goCompetencia(competencia.id)">
+                  <div class="">
+                    <h4 class="center">{{competencia.fecha_string}}</h4>
+                    <h2 class="center">{{competencia.nombre}}</h2>
+                  </div>
+                  <p class="mb-1"></p>
+                </div>
+              </div>
+            </ng-container>
+          </mat-list-item>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-list>
+  </mat-card>
+</section>

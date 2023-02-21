@@ -1,0 +1,156 @@
+<section class="container center-vh" *ngIf="isComun()">
+  <mat-card class="pencas-card">
+    <h1 class="text-center">
+      Deporte: <span *ngIf="deportePenca == 0">Futbol</span
+      ><span *ngIf="deportePenca == 1">Basquetball</span
+      ><span *ngIf="deportePenca == 2">Tenis</span
+      ><span *ngIf="deportePenca == 3">Voley</span>
+    </h1>
+    <h2 class="text-center">
+      Fecha: <span>{{ partido.fecha_string }}</span>
+    </h2>
+    <mat-list>
+      <h2 class="mat-h1 text-center">
+        Liga: <span>{{ ligaDt.nombreLiga }}</span>
+      </h2>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col">
+          <div class="">
+            <small>Local: </small>
+            <em></em>
+            <small>Visitante: </small>
+            <br />
+            <br />
+            <small class="loc QStatus">{{ partido.local }}</small>
+            <em> VS.</em>
+            <small class="visi QStatus">{{ partido.visitante }}</small>
+          </div>
+        </div>
+      </div>
+    </mat-list>
+    <hr />
+    <mat-list>
+      <div class="">
+        <div class="text-center">
+          <p class="medio">Resultado:</p>
+          <span *ngIf="Numero(partido.resultado) == 3" class="LStatus"
+            >Indefinido</span
+          >
+          <span *ngIf="Numero(partido.resultado) == 0" class="VStatus"
+            >Gano Local</span
+          >
+          <span *ngIf="Numero(partido.resultado) == 1" class="EeStatus"
+            >Gano Visitante</span
+          >
+          <span *ngIf="Numero(partido.resultado) == 2" class="IStatus"
+            >Empate</span
+          >
+        </div>
+      </div>
+    </mat-list>
+    <mat-list>
+      <div class="medio">
+        <div class="text-center">
+          <p class="medio">Mi predicción:</p>
+          <button
+            mat-raised-button
+            mat-button
+            (click)="openDialog('0ms', '0ms', partido.id)"
+            *ngIf="Numero(miPrediccion) == 3 && Numero(partido.resultado) == 3"
+          >
+            Predecir
+          </button>
+          <span *ngIf="Numero(miPrediccion) == 0" class="VStatus"
+            >Gano Local</span
+          >
+          <span *ngIf="Numero(miPrediccion) == 1" class="EeStatus"
+            >Gano Visitante</span
+          >
+          <span *ngIf="Numero(miPrediccion) == 2" class="IStatus">Empate</span>
+          <span
+            *ngIf="Numero(partido.resultado) != 3 && Numero(miPrediccion) == 3"
+            class="LStatus"
+            >Indefinido</span
+          >
+        </div>
+      </div>
+    </mat-list>
+    <br />
+    <mat-list>
+      <div class="row fondo">
+        <ngx-charts-advanced-pie-chart
+          [scheme]="colorScheme"
+          [results]="single"
+          [gradient]="gradient"
+          (select)="onSelect($event)"
+          (activate)="onActivate($event)"
+          (deactivate)="onDeactivate($event)"
+        >
+        </ngx-charts-advanced-pie-chart>
+      </div>
+    </mat-list>
+    <mat-list>
+      <div class="text-center medio">
+        <div class="text-center">
+          <p class="medio">Historial de los equipos:</p>
+
+          <div>
+            <em class="visi QStatus hE">{{ partido.visitante }}</em>
+            <mat-grid-list *ngFor="let historial of historialE1">
+              <mat-grid *ngIf="NumeroH(historial.tipo_Historial) == 0"
+                ><img
+                  matTooltip="Gano"
+                  class="historial"
+                  src="https://i.ibb.co/7bG4Vtc/1200px-Eo-circle-red-white-letter-g-svg.png"
+                  alt=""
+              /></mat-grid>
+              <mat-grid *ngIf="NumeroH(historial.tipo_Historial) == 1"
+                ><img
+                  matTooltip="Perdio"
+                  class="historial"
+                  src="https://i.ibb.co/7CztXqR/768px-Eo-circle-pink-letter-p-svg.png"
+                  alt=""
+              /></mat-grid>
+              <mat-grid *ngIf="NumeroH(historial.tipo_Historial) == 2"
+                ><img
+                  matTooltip="Empato"
+                  class="historial"
+                  src="https://i.ibb.co/C2jNdB8/1200px-Eo-circle-red-letter-e-svg.png"
+                  alt=""
+              /></mat-grid>
+            </mat-grid-list>
+            <br />
+            <br />
+            <em class="visi QStatus hE">{{ partido.local }}</em>
+            <mat-grid-list *ngFor="let historiale of historialE2">
+              <mat-grid *ngIf="NumeroH(historiale.tipo_Historial) == 0"
+                ><img
+                  matTooltip="Gano"
+                  class="historial"
+                  src="https://i.ibb.co/7bG4Vtc/1200px-Eo-circle-red-white-letter-g-svg.png"
+                  alt=""
+              /></mat-grid>
+              <mat-grid *ngIf="NumeroH(historiale.tipo_Historial) == 1"
+                ><img
+                  matTooltip="Perdio"
+                  class="historial"
+                  src="https://i.ibb.co/7CztXqR/768px-Eo-circle-pink-letter-p-svg.png"
+                  alt=""
+              /></mat-grid>
+              <mat-grid *ngIf="NumeroH(historiale.tipo_Historial) == 2"
+                ><img
+                  matTooltip="Empato"
+                  class="historial"
+                  src="https://i.ibb.co/C2jNdB8/1200px-Eo-circle-red-letter-e-svg.png"
+                  alt=""
+              /></mat-grid>
+            </mat-grid-list>
+            <br />
+            <br />
+          </div>
+        </div>
+      </div>
+    </mat-list>
+  </mat-card>
+</section>

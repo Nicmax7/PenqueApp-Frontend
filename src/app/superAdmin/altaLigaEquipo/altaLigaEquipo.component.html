@@ -1,0 +1,39 @@
+<section class="container center-vh" *ngIf="isSuperAdmin()">
+   
+    <ngx-spinner 
+        bdColor = "rgba(0, 0, 0, 0.8)" 
+        size = "medium" 
+        color = "#fff" 
+        type = "ball-pulse" 
+        [fullScreen] = "true">
+    </ngx-spinner>
+
+    <mat-card class="auth-card">
+        <h1 class="mat-h1 text-center">Registro de Ligas de Equipos</h1>
+        <hr>
+        <form class="auth-form-container">
+            <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput type="text" placeholder="Ingresa el nombre de la liga por equipos" [formControl]="nameFormControl" required>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Tope de partidos</mat-label>
+                <input matInput type="number" placeholder="Ingresa el tope de partidos a jugar" [formControl]="topeFormControl" required>                
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Deporte</mat-label>
+                <select matNativeControl [formControl]="deporteFormControl" required>
+                    <option value="vacio" selected> -- Selecciona un deporte -- </option>
+                    <option value="Futbol">Fútbol</option>
+                    <option value="Basquetbol">Básquetbol</option>
+                    <option value="Tenis">Tenis</option>
+                    <option value="Voleybol">Voleybol</option>
+                </select>
+            </mat-form-field>
+            <div class="auth-form-button">
+                <button mat-raised-button color="" (click)="registrar()">Registrar Liga</button>
+            </div> 
+        </form>
+    </mat-card>
+
+</section>

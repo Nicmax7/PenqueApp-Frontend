@@ -1,0 +1,44 @@
+<section class="container" *ngIf="isEmpresa()">
+  <mat-card class="pencas-card" >
+    <div class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom usuario">
+      {{empresa}}
+    </div>
+    <br>
+    <div class="containerr">
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
+        <br>
+        <div class="list-group list-group-flush border-bottom scrollarea">
+          <div class="list-group-item list-group-item-action py-3 lh-tight derecha"
+               *ngFor="let msg of mensajes"
+          >
+          <div class="derecha" *ngIf="msg.rol == 'Empresa'">
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1 usuario">Tu</strong>
+            </div>
+            <br>
+            <div class="col-10 mb-1 smallD">{{msg.mensaje}}</div>
+          </div>
+            
+            <br>
+            <div class="izquierda" *ngIf="msg.rol == 'Comun'">
+              <div class="d-flex w-100 align-items-center justify-content-between">
+                <strong class="mb-1 usuario">{{empresa}}</strong>
+              </div>
+              <br>
+              <div class="col-10 mb-1 smallI">{{msg.mensaje}}</div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+      <form >
+        <input class="form-control" placeholder="Enviar mensaje...." [formControl]="mensajeFormControl"
+        />
+        <button mat-fab style="background: rgb(3,131,18);
+        background: linear-gradient(0deg, rgba(3,131,18,1) 0%, rgba(2,118,121,1) 100%);" (click)="enviarMSG()" aria-label="Example icon button with a bookmark icon">
+          <mat-icon>send</mat-icon>
+        </button>
+      </form>
+    </div>
+</mat-card>
+</section>
